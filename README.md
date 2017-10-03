@@ -2,7 +2,7 @@
 
 Шаринг в соцсетях. Код максимально минимизирован.
 
-HTML
+### HTML
 
 ```html
 <a onclick="Share.vkontakte('URL','TITLE','IMG_PATH','DESC')">Вконтакте</a>
@@ -12,7 +12,7 @@ HTML
 <a onclick="Share.twitter('URL','TITLE')">Twitter</a>
 ```
 
-JS
+### JS
 ```js
 Share = {
 	vkontakte: function(purl, ptitle, pimg, text) {
