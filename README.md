@@ -10,6 +10,7 @@
 <a onclick="Share.mailru('URL','TITLE','IMG_PATH','DESC')">Mail.ru</a>
 <a onclick="Share.odnoklassniki('URL','DESC')">Одноклассники</a>
 <a onclick="Share.twitter('URL','TITLE')">Twitter</a>
+<a onclick="Share.pintirest('URL','IMG_PATH','TITLE')">Pintirest</a>
 ```
 
 ### JS
@@ -53,6 +54,13 @@ Share = {
 		url += '&imageurl='    + encodeURIComponent(pimg);
 		Share.popup(url)
 	},
+	pintirest: function(purl, pimage, description) {
+        url  = 'https://pinterest.com/pin/create/button/?';
+        url += 'url='          + encodeURIComponent(purl);
+        url += '&media='       + encodeURIComponent(pimage);
+        url += '&description=' + encodeURIComponent(description);
+        Share.popup(url);
+    },
 
 	popup: function(url) {
 		window.open(url,'','toolbar=0,status=0,width=626,height=436');
