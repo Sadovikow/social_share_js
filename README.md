@@ -6,11 +6,12 @@
 
 ```html
 <a onclick="Share.vkontakte('URL','TITLE','IMG_PATH','DESC')">Вконтакте</a>
-<a onclick="Share.facebook('URL','TITLE','IMG_PATH','DESC')">Facebook</a>
+<a onclick="Share.facebook('URL')">Facebook</a>
 <a onclick="Share.mailru('URL','TITLE','IMG_PATH','DESC')">Mail.ru</a>
 <a onclick="Share.odnoklassniki('URL','DESC')">Одноклассники</a>
 <a onclick="Share.twitter('URL','TITLE')">Twitter</a>
 <a onclick="Share.pintirest('URL','IMG_PATH','TITLE')">Pintirest</a>
+<a onclick="Share.whatsapp('URL','TEXT')">Whatsapp</a>
 ```
 
 ### JS
@@ -31,12 +32,10 @@ Share = {
 		url += '&st._surl='    + encodeURIComponent(purl);
 		Share.popup(url);
 	},
-	facebook: function(purl, ptitle, pimg, text) {
-		url  = 'http://www.facebook.com/sharer.php?s=100';
-		url += '&p[title]='     + encodeURIComponent(ptitle);
-		url += '&p[summary]='   + encodeURIComponent(text);
-		url += '&p[url]='       + encodeURIComponent(purl);
-		url += '&p[images][0]=' + encodeURIComponent(pimg);
+	facebook: function(purl) {
+      	 url = 'http://www.facebook.com/sharer.php?s=100';
+         url += '&u=' + encodeURIComponent(purl);
+        Share.popup(url);
 		Share.popup(url);
 	},
 	twitter: function(purl, ptitle) {
@@ -60,6 +59,12 @@ Share = {
         url += '&media='       + encodeURIComponent(pimage);
         url += '&description=' + encodeURIComponent(description);
         Share.popup(url);
+    },
+    whatsapp: function (purl, text) {
+        url = 'https://api.whatsapp.com/send';
+        url += '?text=' + encodeURIComponent(text);
+        url += ' | ' + encodeURIComponent(purl);
+        Share.popup(url)
     },
 
 	popup: function(url) {
